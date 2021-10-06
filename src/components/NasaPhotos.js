@@ -15,6 +15,11 @@ export default function NasaPhotos() {
     }, [])
 
     return (
-        <img src={photo.url} alt={photo.title} />
+        <div>
+            <img src={photo.url} alt={photo.title} />
+            <h2>{photo.title}</h2>
+            <span>{photo.date}</span>
+            <p>{photo.explanation}</p>
+        </div>
     )
 }
