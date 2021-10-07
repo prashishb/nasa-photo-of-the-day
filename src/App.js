@@ -1,16 +1,23 @@
 import React from "react";
 import NasaPhotos from './components/NasaPhotos';
 import "./App.css";
+import styled from 'styled-components';
 
 function App() {
 
 
   return (
-    <div class="container">
+    <StyledContainer>
       <h1>NASA Image Of The Day</h1>
       <NasaPhotos />
-    </div>
+    </StyledContainer>
   );
 }
+
+const StyledContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 export default App;
