@@ -30,11 +30,13 @@ export default function NasaPhotos() {
 const StyledDiv = styled.div`
     display: flex;
     justify-content: space-between;
+    max-height: 100%;
+    max-width: 80%;
     margin: 0 auto;
-    border: 1px solid #d2d2d2;
-    box-shadow: 0px 1px 6px -2px #807f7f;
-    border-radius: 2%;
     padding: 2%;
+    border: 1px solid #d2d2d2;
+    border-radius: 2%;
+    box-shadow: 0px 1px 6px -2px #807f7f;
 
     img {
         width: 50%;
@@ -44,4 +46,8 @@ const StyledDiv = styled.div`
 
 const StyledDetails = styled.div`
     width: 45%;
+
+    p {
+        line-height: 1.1.%;
+    }
 `

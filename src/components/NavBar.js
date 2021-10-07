@@ -3,21 +3,17 @@ import styled from 'styled-components';
 
 export default function NavBar() {
     return (
-        <div>
-            <StyledNav>
-                <h1>NASA Photo Of The Day</h1>
-            </StyledNav>
-            <StyledSpacer></StyledSpacer>
-        </div>
+        <StyledNav>
+            <h1>NASA Photo Of The Day</h1>
+        </StyledNav>
     )
 }
 
 const StyledNav = styled.div`
-    position: absolute;
-    top: 0;
+    display: flex;
+    justify-content: center;
     width: 100%;
     background-color: #343A40;
-`
-const StyledSpacer = styled.div`
-    margin-bottom: 20%;
+    color: white;
+    margin-bottom: 2%;
 `
