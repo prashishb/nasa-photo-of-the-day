@@ -18,17 +18,21 @@ export default function NasaPhotos() {
 
     const [sendRequest, setSendRequest] = useState(false);
     
+    // creating date object
     const today = new Date();
     const yesterday = new Date(today);
     yesterday.setDate(yesterday.getDate() -1);
     const dateString = yesterday.getFullYear() + "-" + (yesterday.getMonth() + 1) + "-" + yesterday.getDate();
 
+    // axios request on button click to get yesterdays APOD
     useEffect(() => {
         if (sendRequest) {
             axios.get(`${BASE_URL}?api_key=${API_KEY}&date=${dateString}`)
                 .then(res => {
                     setPhoto(res.data);
-
+                    if (document.querySelector('button').classList.contains('on')) {
+                        document.querySelector('button').classList.toggle('on')
+                    }
                 })
                 .catch(err => {
                     console.error(err);
@@ -43,12 +47,13 @@ export default function NasaPhotos() {
                 <h2>{photo.title}</h2>
                 <span>{photo.date}</span>
                 <p>{photo.explanation}</p>
-                <button disabled={sendRequest} onClick={() => setSendRequest(true)}>Previous Date</button>
+                <button class='on' disabled={sendRequest} onClick={() => setSendRequest(true)}>Previous Date</button>
             </div>
         </StyledDiv>
     )
 }
 
+// Styling
 const StyledDiv = styled.div`
     display: flex;
     justify-content: space-between;
@@ -77,6 +82,22 @@ const StyledDiv = styled.div`
 
     p {
         line-height: 2;
+    }
+
+    button {
+        background-color: rgba(52, 58, 64, 30%);
+        padding: 10px;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none;
+        border-radius: 2px;
+        margin-bottom: 0;
+    }
+
+    .on:hover {
+        background-color: rgba(52, 58, 64, 60%);
+        transition: all .4s ease-in-out;
     }
 
     @media (max-width: 1280px) {
