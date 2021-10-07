@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BASE_URL, API_KEY } from '../constants';
 import styled from 'styled-components';
 
 export default function NasaPhotos() {
     
     const [photo, setPhoto] = useState('');
     useEffect(() => {
-        axios.get('https://api.nasa.gov/planetary/apod?api_key=Q2FCqhvngGZha6UkJVNF7Ws1xhi13UbEQvyiLdgg')
+        axios.get(`${BASE_URL}?api_key=${API_KEY}`)
             .then(res => {
                 setPhoto(res.data);
             })
