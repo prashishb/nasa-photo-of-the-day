@@ -18,7 +18,11 @@ export default function NasaPhotos() {
 
     const [sendRequest, setSendRequest] = useState(false);
     
-    // creating date object
+    /*
+        Creating date object
+        for now the button is disabled when clicking it once
+        should probably create a date picker but this will do for now
+    */
     const today = new Date();
     const yesterday = new Date(today);
     yesterday.setDate(yesterday.getDate() -1);
@@ -47,7 +51,7 @@ export default function NasaPhotos() {
                 <h2>{photo.title}</h2>
                 <span>{photo.date}</span>
                 <p>{photo.explanation}</p>
-                <button class='on' disabled={sendRequest} onClick={() => setSendRequest(true)}>Previous Date</button>
+                <button className='on' disabled={sendRequest} onClick={() => setSendRequest(true)}>Previous Date</button>
             </div>
         </StyledDiv>
     )
