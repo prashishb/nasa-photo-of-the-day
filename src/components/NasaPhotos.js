@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 export default function NasaPhotos() {
     
@@ -15,11 +16,32 @@ export default function NasaPhotos() {
     }, [])
 
     return (
-        <div>
+        <StyledDiv>
             <img src={photo.url} alt={photo.title} />
-            <h2>{photo.title}</h2>
-            <span>{photo.date}</span>
-            <p>{photo.explanation}</p>
-        </div>
+            <StyledDetails>
+                <h2>{photo.title}</h2>
+                <span>{photo.date}</span>
+                <p>{photo.explanation}</p>
+            </StyledDetails>
+        </StyledDiv>
     )
 }
+
+const StyledDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10%;
+    border: 1px solid #d2d2d2;
+    box-shadow: 0px 1px 6px -2px #807f7f;
+    border-radius: 2%;
+    padding: 2%;
+
+    img {
+        width: 50%;
+    }
+`
+
+const StyledDetails = styled.div`
+    width: 45%;
+`

@@ -7,17 +7,8 @@ function App() {
 
 
   return (
-    <StyledContainer>
-      <h1>NASA Image Of The Day</h1>
-      <NasaPhotos />
-    </StyledContainer>
+    <NasaPhotos />
   );
 }
-
-const StyledContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
 
 export default App;
