@@ -30,8 +30,7 @@ export default function NasaPhotos() {
 const StyledDiv = styled.div`
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin: 10%;
+    margin: 0 auto;
     border: 1px solid #d2d2d2;
     box-shadow: 0px 1px 6px -2px #807f7f;
     border-radius: 2%;
@@ -39,6 +38,7 @@ const StyledDiv = styled.div`
 
     img {
         width: 50%;
+        object-fit: contain;
     }
 `
 
