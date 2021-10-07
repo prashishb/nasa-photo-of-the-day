@@ -16,6 +16,26 @@ export default function NasaPhotos() {
             })
     }, [])
 
+    const [sendRequest, setSendRequest] = useState(false);
+    
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() -1);
+    const dateString = yesterday.getFullYear() + "-" + (yesterday.getMonth() + 1) + "-" + yesterday.getDate();
+
+    useEffect(() => {
+        if (sendRequest) {
+            axios.get(`${BASE_URL}?api_key=${API_KEY}&date=${dateString}`)
+                .then(res => {
+                    setPhoto(res.data);
+
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        }
+    }, [sendRequest, dateString])
+
     return (
         <StyledDiv>
             <img src={photo.url} alt={photo.title} />
@@ -23,6 +43,7 @@ export default function NasaPhotos() {
                 <h2>{photo.title}</h2>
                 <span>{photo.date}</span>
                 <p>{photo.explanation}</p>
+                <button disabled={sendRequest} onClick={() => setSendRequest(true)}>Previous Date</button>
             </div>
         </StyledDiv>
     )
@@ -39,6 +60,7 @@ const StyledDiv = styled.div`
     border-radius: 2%;
     box-shadow: 0px 1px 6px -2px #807f7f;
     font-size: 20px;
+    text-align: left;
 
     img {
         width: 50%;
@@ -49,8 +71,12 @@ const StyledDiv = styled.div`
         width: 45%;
     }
 
+    h2 {
+        margin-top: 0;
+    }
+
     p {
-        line-height: 1.5;
+        line-height: 2;
     }
 
     @media (max-width: 1280px) {
