@@ -89,7 +89,7 @@ const StyledDiv = styled.div`
     }
 
     button {
-        background-color: rgba(52, 58, 64, 30%);
+        background-color: rgba(52, 58, 64, 40%);
         padding: 10px;
         text-decoration: none;
         text-transform: uppercase;
